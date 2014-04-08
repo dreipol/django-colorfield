@@ -17,7 +17,7 @@ setup(
     ],
     packages=['colorfield'],
     include_package_data=True,
-    install_requires=['django>=1.2'],
-    requires=['django (>=1.2)'],
+    install_requires=['django>=1.5'],
+    requires=['django (>=1.5)'],
 )
 

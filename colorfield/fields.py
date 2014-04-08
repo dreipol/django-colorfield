@@ -3,8 +3,8 @@
 import re
 
 from django import forms
+from django.templatetags.static import static
 from django.db import models
-from django.conf import settings
 from django.core.validators import RegexValidator
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
@@ -15,7 +15,7 @@ validate_color = RegexValidator(color_re, _(u'Enter a valid color.'), 'invalid')
 
 class ColorWidget(forms.Widget):
     class Media:
-        js = [settings.MEDIA_URL + 'colorfield/jscolor.js']
+        js = [static('jscolor/jscolor.js'), ]
         
     def render(self, name, value, attrs=None):
         return render_to_string('colorfield/color.html', locals())
@@ -37,5 +37,3 @@ try:
     add_introspection_rules([], ["^colorfield\.fields\.ColorField"])
 except ImportError:
     pass
-
-# vim: et sw=4 sts=4
